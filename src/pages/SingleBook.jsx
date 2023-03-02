@@ -1,7 +1,7 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet';
 import {useLocation} from 'react-router-dom';
-import {publicRequest} from '../requestMethods';
 
 export default function SingleBook() {
     const location = useLocation();
@@ -21,7 +21,7 @@ export default function SingleBook() {
     useEffect(() => {
         const fetchBook = async () => {
             try {
-                const res = await publicRequest.get('/books/' + id)
+                const res = await axios.get('https://healthgen-api.onrender.com/api/books/' + id)
                 setBook(res.data);
             } catch (error) {
                 console.log(error);
@@ -54,12 +54,12 @@ export default function SingleBook() {
         {
             book && (
             <div>
-                <span>Authors:<a href="#">{book.author}</a></span>
+                <span>Authors:<a>{book.author}</a></span>
                 <span>
                     Genres:
                     {
                         book.categories && book.categories.map(category => {
-                            return <a href={category} title={category}>{category}</a>
+                            return <a title={category}>{category}</a>
                         })
                     }
                 </span>

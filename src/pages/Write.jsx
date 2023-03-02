@@ -1,13 +1,14 @@
-import {useState } from "react";
-import { useSelector } from "react-redux";
-import { userRequest } from "../requestMethods";
+import axios from "axios";
+import {useContext, useEffect, useState } from "react";
+import { UserContext } from "../UserContext";
 
 const Write = () => {
-    const user = useSelector((state) => state.user.currentUser);
+    const {user}= useContext(UserContext);
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [file, setFile] = useState(null);
     const [tags, setTags] = useState([]);
+    const [TOKEN, setToken] = useState('');
 
     const addTag = (e) => {
       e.preventDefault()
@@ -32,7 +33,7 @@ const Write = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       const newPost = {
-        author: user.others.username,
+        author: user.username,
         title,
         desc,
         categories: tags.length > 0 ? tags : null
@@ -49,10 +50,40 @@ const Write = () => {
         data.append("file", file);
         newPost.img = filename;
 
-        userRequest.post('/upload', data).then(res => {
-          userRequest.post('/posts', newPost).then(res => {
-            userRequest.post('/categories', newCategory);
-            window.location.replace("/posts/" + res.data._id);
+        const options1 = {
+          method: 'POST',
+          url: 'https://healthgen-api.onrender.com/api/upload',
+          headers: {
+            token: `Bearer ${TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: data
+        };
+
+        const options2 = {
+          method: 'POST',
+          url: 'https://healthgen-api.onrender.com/api/posts',
+           headers: {
+            token: `Bearer ${TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: newPost 
+        };
+
+        const options3 = {
+          method: 'POST',
+          url: 'https://healthgen-api.onrender.com/api/categories',
+           headers: {
+            token: `Bearer ${TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: newCategory
+        };
+
+        axios.request(options1).then(res => {
+          axios.request(options2).then(res => {
+            axios.request(options3);
+            window.location.replace("https://healthgen-api.onrender.com/api/posts/" + res.data._id);
           }).catch(err => {
             console.log(err)
           })
@@ -61,6 +92,10 @@ const Write = () => {
         })
       }
     };
+
+    useEffect(() => {
+      setToken(user.accessToken)
+    }, [user]);
     return (
     <div className="write">
         {file && (

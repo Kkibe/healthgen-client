@@ -1,10 +1,10 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
 import { Outlet, NavLink} from "react-router-dom";
+import { UserContext } from '../UserContext';
 import Icon from '../assets/logo.png';
 
 const Navbar = () => {
-    const user = useSelector((state) => state.user.currentUser);
+    const {user} = useContext(UserContext);
     document.addEventListener('click', (e) => {      
         let element = document.querySelector('.dropdown');
         const classes = e.target.classList;

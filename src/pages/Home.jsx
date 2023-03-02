@@ -1,10 +1,10 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Book from '../components/Book'
 import Flyer from '../components/Flyer'
 import Loader from '../components/Loader'
 import Post from '../components/Post'
 import Slider from '../components/Slider'
-import { publicRequest } from '../requestMethods'
 
 export default function Home() {
   const [books, setBooks] = useState(null);
@@ -12,13 +12,13 @@ export default function Home() {
   useEffect(() => {
       const fetchData = async () => {
           try {
-              const res = await publicRequest.get('/books')
+              const res = await axios.get('https://healthgen-api.onrender.com/api/books')
               setBooks(res.data);
           } catch (error) {
               console.log(error);
           }
           try {
-            const res = await publicRequest.get('/posts')
+            const res = await axios.get('https://healthgen-api.onrender.com/api/posts')
             setPosts(res.data);
         } catch (error) {
             console.log(error);

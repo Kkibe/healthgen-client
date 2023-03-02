@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../UserContext';
 
 const Footer = () => {
-    const user = useSelector((state) => state.user.currentUser);
+    const {user} = useContext(UserContext);
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        user && setIsAdmin(user.others.isAdmin)
+        user && setIsAdmin(user.isAdmin)
     }, [user])
     return (
         <div className='footer'>

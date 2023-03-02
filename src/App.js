@@ -1,5 +1,4 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import {
     Routes,
     Route,
@@ -23,16 +22,22 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import UploadBook from './pages/UploadBook';
+import { UserContext } from './UserContext';
 export default function App() {
-  const user = useSelector((state) => state.user.currentUser);
+  const [user, setUser] = useState(null);
+
   const ProtectedRoute = ({ children }) => {
     if (!user) {
       return <Navigate to="/login" />;
     }
     return children
   };
+  useEffect(() => {
+    setUser(JSON.parse( window.localStorage.getItem('healthgen-user')));
+  }, [])
   return (
-    <div className='app'>
+    <UserContext.Provider  value={{user, setUser}}>
+      <div className='app'>
         <Topbar />
         <Navbar />
         <Dropdown />
@@ -52,6 +57,7 @@ export default function App() {
         </Routes>
         <Newsletter />
         <Footer />
-    </div>
+      </div>
+    </UserContext.Provider>
   )
 }

@@ -1,15 +1,16 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { userRequest } from '../requestMethods';
+import { UserContext } from '../UserContext';
 
 export default function UploadBook() {
-    const user = useSelector((state) => state.user.currentUser);
+  const {user}= useContext(UserContext);
     const [title, setTitle] = useState(null);
     const [img, setImage] = useState(null);
     const [file, setFile] = useState(null);
     const [desc, setDescription] = useState(null);
     const [categories, setCategories] = useState([]);
+    const [TOKEN, setToken] = useState('');
 
       function fileSizeValidation (e) {
         var file = e.target.files[0];
@@ -54,6 +55,27 @@ export default function UploadBook() {
           fileData.append("name", filename);
           fileData.append("file", file);
           newBook.file = filename;
+
+          const options1 = {
+            method: 'POST',
+            url: 'https://healthgen-api.onrender.com/api/upload',
+            headers: {
+              token: `Bearer ${TOKEN}`,
+              'Content-Type': 'application/json'
+            },
+            body: fileData
+          };
+ 
+  
+          const options3 = {
+            method: 'POST',
+            url: 'https://healthgen-api.onrender.com/api/books',
+             headers: {
+              token: `Bearer ${TOKEN}`,
+              'Content-Type': 'application/json'
+            },
+            body: newBook
+          };
           if (img) {
             const data = new FormData();
             const filename = Date.now() + img.name;
@@ -61,9 +83,20 @@ export default function UploadBook() {
             data.append("file", img);
             newBook.img = filename;
 
-            userRequest.post('/upload', fileData).then(res => {
-              userRequest.post('/upload', data).then(res => {
-                userRequest.post('/books', newBook).then(res => {
+             
+          const options2 = {
+            method: 'POST',
+            url: 'https://healthgen-api.onrender.com/api/upload',
+             headers: {
+              token: `Bearer ${TOKEN}`,
+              'Content-Type': 'application/json'
+            },
+            body: data
+          };
+
+            axios.request(options1).then(res => {
+              axios.request(options2).then(res => {
+                axios.request(options3).then(res => {
                   window.location.replace("/books/" + res.data._id);
                 }).catch(err => {
                   console.log(err)
@@ -77,6 +110,9 @@ export default function UploadBook() {
           }
         }
       };
+      useEffect(() => {
+        setToken(user.accessToken)
+      }, [user]);
   return (
     <div className='uploadBook'>
             <form>

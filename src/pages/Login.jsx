@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../redux/apiCalls';
+import axios from 'axios';
+import React, { useContext, useState, useEffect} from 'react';
+import { UserContext } from '../UserContext';
 
 const Login = () => {
-    const {isFetching, error, currentUser} = useSelector((state) => state.user);
-    const dispatch = useDispatch()
+    const {user, setUser}  = useContext(UserContext);
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
+    const [error, setError] = useState(null);
+
     const handleLogin = (e) => {
         e.preventDefault();
-        login(dispatch, {
-          username, 
+        axios.post('https://healthgen-api.onrender.com/api/auth/login', {
+          username,
           password
+        }).then(res => {
+          window.localStorage.setItem('healthgen-user', JSON.stringify(res.data));
+        }).catch(error => {
+          setError(error);
+          console.log(error)
         })
-    }
+      }
     useEffect(() => {
-        currentUser && window.history.back()
-    },[])
+        user && window.history.back()
+        error && setTimeout(() => {setError(null)}, 3000)
+      }, [error, user])
     return (
         <div className='login'>
             <form action="">
@@ -26,7 +32,7 @@ const Login = () => {
                 <input type="password" onChange={e => setPassword(e.target.value)} name="" id="" placeholder='password' required/>
                 <button type="submit" onClick={handleLogin} title="login">LOGIN</button>
                 {
-                    error && <span className="error text-danger">Something went wrong</span>
+                    error && <span className="error text-danger">{error.response.data}</span>
                 }
             </form>
         </div>

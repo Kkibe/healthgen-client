@@ -1,14 +1,14 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import Book from '../components/Book';
 import Loader from '../components/Loader';
-import {publicRequest} from '../requestMethods';
 
 const Books = () => {
     const [books, setBooks] = useState(null);
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const res = await publicRequest.get('/books')
+                const res = await axios.get('https://healthgen-api.onrender.com/api/books')
                 setBooks(res.data);
             } catch (error) {
                 console.log(error);

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import {useLocation} from 'react-router-dom';
-import {publicRequest} from '../requestMethods';
 import Post from '../components/Post';
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 const SinglePost = () => {
     const location = useLocation();
@@ -20,13 +20,13 @@ const SinglePost = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await publicRequest.get('/posts/' + id)
+                const res = await axios.get('https://healthgen-api.onrender.com/api/posts/' + id)
                 setPost(res.data);
             } catch (error) {
                 console.log(error);
             }
             try {
-                const res = await publicRequest.get('/posts')
+                const res = await axios.get('https://healthgen-api.onrender.com/api/posts')
                 setPosts(res.data.filter(item => {
                     return item._id  !== id
                 }));

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Post from '../components/Post';
-import {publicRequest} from '../requestMethods';
 import Loader from '../components/Loader';
+import axios from 'axios';
 
 const Posts = () => {
     const [posts, setPosts] = useState(null);
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await publicRequest.get('/posts')
+                const res = await axios.get('https://healthgen-api.onrender.com/api/posts')
                 setPosts(res.data);
             } catch (error) {
                 console.log(error);

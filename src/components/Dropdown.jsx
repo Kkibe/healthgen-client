@@ -1,12 +1,12 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useContext } from 'react';
+import { UserContext } from '../UserContext';
 import { NavLink } from 'react-router-dom';
-import { logoutSuccess } from '../redux/userRedux';
 
 const Dropdown = () => {
-    const dispatch = useDispatch()
+    const {user, setUser} = useContext(UserContext);
     const handleLogout = () => {
-        dispatch(logoutSuccess());
+        setUser(null);
+        window.localStorage.removeItem('coongames-user');
     }
     return (
         <div className='dropdown'>

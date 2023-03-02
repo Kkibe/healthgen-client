@@ -1,16 +1,16 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
 import Image from '../assets/img.jpeg';
+import { UserContext } from '../UserContext';
 
 const Profile = () => {
-    const user = useSelector((state) => state.user.currentUser);
+    const {user, setUser} = useContext(UserContext);
     return (
         <div className='profile'>
             <div className="cover-photo">
                 <img src={Image} alt="" className='profile-image' crossOrigin="anonymous"/>
             </div>
-            <div className="profile-name">{user && user.others.username}</div>
-            <h3>{user && user.others.email}</h3>
+            <div className="profile-name">{user && user.username}</div>
+            <h3>{user && user.email}</h3>
             <p className="about">
                 User Interface Designer and <br /> fron-end developer
             </p>
