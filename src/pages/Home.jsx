@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Book from '../components/Book'
-import Flyer from '../components/Flyer'
 import Loader from '../components/Loader'
 import Post from '../components/Post'
 import Slider from '../components/Slider'
@@ -67,7 +66,6 @@ export default function Home() {
             }    
           
       </div>
-      <Flyer />
     </div>
   )
 }

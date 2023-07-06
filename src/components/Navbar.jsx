@@ -9,14 +9,14 @@ const Navbar = () => {
         let element = document.querySelector('.dropdown');
         const classes = e.target.classList;
         if(classes.contains('avatar')) {
-            if(element.style.display === 'none') {
-                return element.style.display = 'flex'
-            } else {
+            if(element.style.display === 'flex') {
                 return element.style.display = 'none'
+            } else {
+                return element.style.display = 'flex'
             }
         } else if(classes.contains('dropdown')) {
-            return
-        } else return element.style.display = 'none'
+           return element.style.display = 'none'
+        } 
     })
     return (
         <div className='navbar'>
@@ -32,12 +32,9 @@ const Navbar = () => {
                 <NavLink to='/contact' className="link" title='contact' style={({ isActive }) => {return {color: isActive ? "#ffff" : "",background: isActive ? "#1253a3" : ""};}}>Contact</NavLink>
             </nav>
             {   user && 
-                <div className="user-avatar">
-                    <img className='avatar' src={ 
+                    <img className="user-avatar" src={ 
                         user.img ? user.img : Icon
                         } alt="avatar" />
-                    <i className="fa fa-user avatar"></i>
-                </div>
             }
             {
                 !user &&

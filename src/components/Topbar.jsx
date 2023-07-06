@@ -10,7 +10,7 @@ export default function Topbar() {
         <a href="https://www.youtube.com/@codespear" className='youtube' target='_blank' title='youtube'><i className="fa fa-youtube"></i></a>
         <a href="https://www.linkedin.com/in/kibetkorir" className='linkedin' target='_blank' title='linkedin'><i className="fa fa-linkedin"></i></a>
       </div>
-      <a href="/#subscribe" title="subscribe"><button className='button-primary' type='button' title='subscribe'> subscribe</button></a>
+      <a href="#subscribe" title="subscribe"><button className='button-primary' type='button' title='subscribe'> subscribe</button></a>
     </div>
   )
 }

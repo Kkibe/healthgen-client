@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useContext, useState, useEffect} from 'react';
 import { UserContext } from '../UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const {user, setUser}  = useContext(UserContext);
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -14,7 +16,8 @@ const Login = () => {
           username,
           password
         }).then(res => {
-          window.localStorage.setItem('healthgen-user', JSON.stringify(res.data));
+          JSON.parse( window.localStorage.setItem('healthgen-user', JSON.stringify(res.data)))
+          navigate('/write');
         }).catch(error => {
           setError(error);
           console.log(error)

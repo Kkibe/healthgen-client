@@ -5,14 +5,14 @@ const Slider = () => {
     const [slideIndex, setSlideIndex] = useState(0);
     const handleClick = (direction) => {
         if(direction === "left") {
-            setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3)
+            setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2)
         } else {
             setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
         }
     }
     return (
         <div className="slider">
-            <div className="wrapper" style={{transform: `translateX(${slideIndex * -100}vw)`}}>
+            <div className="wrapper"  style={{transform: `translateX(${slideIndex * -100}vw)`}}>
                 {
                     slides.map(slide => {
                       return  <div className="slide" key={slide.id}>

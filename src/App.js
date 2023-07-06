@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Routes,
     Route,
@@ -35,8 +35,9 @@ export default function App() {
   useEffect(() => {
     setUser(JSON.parse( window.localStorage.getItem('healthgen-user')));
   }, [])
+
   return (
-    <UserContext.Provider  value={{user, setUser}}>
+    <UserContext.Provider value={{user, setUser}} >
       <div className='app'>
         <Topbar />
         <Navbar />

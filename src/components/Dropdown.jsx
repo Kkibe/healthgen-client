@@ -6,7 +6,6 @@ const Dropdown = () => {
     const {user, setUser} = useContext(UserContext);
     const handleLogout = () => {
         setUser(null);
-        window.localStorage.removeItem('coongames-user');
     }
     return (
         <div className='dropdown'>

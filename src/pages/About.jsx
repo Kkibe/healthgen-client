@@ -4,7 +4,7 @@ import Icon from '../assets/logo.png';
 const About = () => {
     return (
         <div className="about">
-            <div className="profile">
+            <div className="about-us">
                 <img src={Icon} className='profile-image' title='healthgen-icon'/>
                 <div className="info">
                     <h1> Welcome to<a href="/" title='healthgen'>Healthgen</a> </h1>
@@ -18,7 +18,7 @@ const About = () => {
                     </ul>
                     <div className="links">
                         <a href="/contact" title='contact'>Contact Us</a>
-                        <a href="#/subscribe" title='newsletter'>Newsletter</a>
+                        <a href="/#subscribe" title='newsletter'>Newsletter</a>
                     </div>
                 </div>
             </div>
