@@ -7,7 +7,7 @@ import axios from 'axios';
 const SinglePost = () => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
-    const PF = 'https://healthgen-api.onrender.com/images/';
+    const PF = 'https://healthgen-api-wt86.onrender.com/images/';
     const [post, setPost] = useState(null);
     const [posts, setPosts] = useState(null);
 
@@ -20,13 +20,13 @@ const SinglePost = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://healthgen-api.onrender.com/api/posts/' + id)
+                const res = await axios.get('https://healthgen-api-wt86.onrender.com/api/posts/' + id)
                 setPost(res.data);
             } catch (error) {
                 console.log(error);
             }
             try {
-                const res = await axios.get('https://healthgen-api.onrender.com/api/posts')
+                const res = await axios.get('https://healthgen-api-wt86.onrender.com/api/posts')
                 setPosts(res.data.filter(item => {
                     return item._id  !== id
                 }));
