@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/home',
     createProxyMiddleware({
-      target: 'https://healthgen-api.onrender.com',
+      target: 'https://healthgen-api-wt86.onrender.com/',
       changeOrigin: true,
     })
   );
