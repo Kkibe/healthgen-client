@@ -1,6 +1,6 @@
 import React from 'react';
 const Book = ({book}) => {
-    const PF = 'https://healthgen-api.onrender.com/images/';
+    const PF = 'https://healthgen-api-wt86.onrender.com/images/';
     const download = (link) => {
         var element = document.createElement('a');
         element.setAttribute('href', link);
