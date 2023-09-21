@@ -62,7 +62,7 @@ const Write = () => {
 
         const options2 = {
           method: 'POST',
-          url: 'https://healthgen-api.onrender.com/api/posts',
+          url: 'https://healthgen-api-wt86.onrender.com/api/posts',
            headers: {
             token: `Bearer ${TOKEN}`,
             'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ const Write = () => {
 
         const options3 = {
           method: 'POST',
-          url: 'https://healthgen-api.onrender.com/api/categories',
+          url: 'https://healthgen-api-wt86.onrender.com/api/categories',
            headers: {
             token: `Bearer ${TOKEN}`,
             'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ const Write = () => {
         axios.request(options1).then(res => {
           axios.request(options2).then(res => {
             axios.request(options3);
-            window.location.replace("https://healthgen-api.onrender.com/api/posts/" + res.data._id);
+            window.location.replace("https://healthgen-api-wt86.onrender.com/api/posts/" + res.data._id);
           }).catch(err => {
             console.log(err)
           })
