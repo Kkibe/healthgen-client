@@ -12,7 +12,7 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post('https://healthgen-api.onrender.com/api/auth/login', {
+        axios.post('https://healthgen-api-wt86.onrender.com/api/auth/login', {
           username,
           password
         }).then(res => {
