@@ -8,7 +8,7 @@ const Books = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const res = await axios.get('https://healthgen-api.onrender.com/api/books')
+                const res = await axios.get('https://healthgen-api-wt86.onrender.com/api/books')
                 setBooks(res.data);
             } catch (error) {
                 console.log(error);
