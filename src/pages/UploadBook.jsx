@@ -58,7 +58,7 @@ export default function UploadBook() {
 
           const options1 = {
             method: 'POST',
-            url: 'https://healthgen-api.onrender.com/api/upload',
+            url: 'https://healthgen-api-wt86.onrender.com/api/upload',
             headers: {
               token: `Bearer ${TOKEN}`,
               'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ export default function UploadBook() {
   
           const options3 = {
             method: 'POST',
-            url: 'https://healthgen-api.onrender.com/api/books',
+            url: 'https://healthgen-api-wt86.onrender.com/api/books',
              headers: {
               token: `Bearer ${TOKEN}`,
               'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ export default function UploadBook() {
              
           const options2 = {
             method: 'POST',
-            url: 'https://healthgen-api.onrender.com/api/upload',
+            url: 'https://healthgen-api-wt86.onrender.com/api/upload',
              headers: {
               token: `Bearer ${TOKEN}`,
               'Content-Type': 'application/json'
