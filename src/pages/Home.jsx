@@ -11,13 +11,13 @@ export default function Home() {
   useEffect(() => {
       const fetchData = async () => {
           try {
-              const res = await axios.get('https://healthgen-api.onrender.com/api/books')
+              const res = await axios.get('https://healthgen-api-wt86.onrender.com/api/books')
               setBooks(res.data);
           } catch (error) {
               console.log(error);
           }
           try {
-            const res = await axios.get('https://healthgen-api.onrender.com/api/posts')
+            const res = await axios.get('https://healthgen-api-wt86.onrender.com/api/posts')
             setPosts(res.data);
         } catch (error) {
             console.log(error);
