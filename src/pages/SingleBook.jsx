@@ -5,7 +5,7 @@ import {useLocation} from 'react-router-dom';
 
 export default function SingleBook() {
     const location = useLocation();
-    const PF = 'https://healthgen-api.onrender.com/images/';
+    const PF = 'https://healthgen-api-wt86.onrender.com/images/';
     const id = location.pathname.split('/')[2];
     const [book, setBook] = useState(null);
 
@@ -21,7 +21,7 @@ export default function SingleBook() {
     useEffect(() => {
         const fetchBook = async () => {
             try {
-                const res = await axios.get('https://healthgen-api.onrender.com/api/books/' + id)
+                const res = await axios.get('https://healthgen-api-wt86.onrender.com/api/books/' + id)
                 setBook(res.data);
             } catch (error) {
                 console.log(error);
