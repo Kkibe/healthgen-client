@@ -8,7 +8,7 @@ const Posts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await axios.get('https://healthgen-api.onrender.com/api/posts')
+                const res = await axios.get('https://healthgen-api-wt86.onrender.com/api/posts')
                 setPosts(res.data);
             } catch (error) {
                 console.log(error);
