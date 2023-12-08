@@ -31,6 +31,7 @@ const Navbar = () => {
                 <NavLink to='/about' className="link" title='about' style={({ isActive }) => {return {color: isActive ? "#ffff" : "",background: isActive ? "#1253a3" : ""};}}>About</NavLink>
                 <NavLink to='/contact' className="link" title='contact' style={({ isActive }) => {return {color: isActive ? "#ffff" : "",background: isActive ? "#1253a3" : ""};}}>Contact</NavLink>
             </nav>
+            <span className="slider-button left" onClick={() => { alert('open')}}><i className="fa fa-angle-bottom"></i></span>
             {   user && 
                     <img className="user-avatar" src={ 
                         user.img ? user.img : Icon
