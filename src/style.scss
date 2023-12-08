@@ -210,13 +210,8 @@ $dark-grey: #7a7979;
             bottom: 0;
             z-index: 100;
             cursor: pointer;
-            margin: auto;
-            &:first-of-type{
-                left: 10px;
-            }
-            &:last-of-type{
-                right: 10px;
-            }
+            margin: 5px;
+            right: 10px;
             &:hover{
                 border: 1px solid $dark-blue;
             
