@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 
 const Register = () => {
@@ -9,7 +8,6 @@ const Register = () => {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -18,8 +16,8 @@ const Register = () => {
             password,
             email
           }).then(res => {
-            navigate('/login');
-          }).catch(error => {
+            setUser(res.data);
+          }).then(() => window.history.back()).catch(error => {
             setError(error);
           })
     }

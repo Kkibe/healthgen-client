@@ -22,6 +22,7 @@ const SinglePost = () => {
             try {
                 const res = await axios.get('https://healthgen-api-wt86.onrender.com/api/posts/' + id)
                 setPost(res.data);
+                console.log(res.data);
             } catch (error) {
                 console.log(error);
             }
@@ -70,8 +71,8 @@ const SinglePost = () => {
                         <a href="https://linkedin.com" className='linkedin' target='_blank' title='linkedin'><i className="fa fa-linkedin"></i></a>
                     </div>
                     <div className="copy-link">
-                        <input type="text" className='link board' value={window.location.href} readOnly/>
-                        <button  onClick={copyToBoard} type="button" title='copy link'>
+                        <input type="text" className='board' value={window.location.href} readOnly/>
+                        <button  onClick={copyToBoard} type="button" title='copy'>
                             <i className='fa fa-clone'/>
                         </button>
                     </div>

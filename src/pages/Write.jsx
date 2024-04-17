@@ -94,7 +94,7 @@ const Write = () => {
     };
 
     useEffect(() => {
-      setToken(user.accessToken)
+      user && setToken(user.accessToken);
     }, [user]);
     return (
     <div className="write">
@@ -126,7 +126,7 @@ const Write = () => {
                 </ul>
                 <div className="details">
                   <p> 5 tags are remaining</p>
-                  <button>Remove all</button>
+                  <button type="button">Remove all</button>
                 </div>
             </div>
           </div>

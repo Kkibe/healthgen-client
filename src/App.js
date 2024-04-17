@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
     Routes,
     Route,
@@ -25,17 +25,23 @@ import UploadBook from './pages/UploadBook';
 import { UserContext } from './UserContext';
 export default function App() {
   const [user, setUser] = useState(null);
-
+  
   const ProtectedRoute = ({ children }) => {
     if (!user) {
       return <Navigate to="/login" />;
     }
     return children
   };
+  
   useEffect(() => {
     setUser(JSON.parse( window.localStorage.getItem('healthgen-user')));
   }, [])
 
+  useEffect(() => {
+    user && window.localStorage.setItem("healthgen-user", JSON.stringify(user));
+    !user && window.localStorage.removeItem("healthgen-user");
+  }, [user]);
+  
   return (
     <UserContext.Provider value={{user, setUser}} >
       <div className='app'>
@@ -54,10 +60,10 @@ export default function App() {
           <Route path='/upload' element={<UploadBook/>} />
           <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path='/login' element={<Login/>} />
-          <Route path='/register' element={<Register/>} />
+          <Route path='/get-started' element={<Register/>} />
         </Routes>
         <Newsletter />
-        <Footer />
+        <Footer  user={user}/>
       </div>
     </UserContext.Provider>
   )

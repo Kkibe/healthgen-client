@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 const Post = ({post}) => {
     const PF = "https://healthgen-api.onrender.com/images/"
     return (
-    <a href={`https://healthgen.onrender.com/posts/${post._id}`} className="post" title={`https://healthgen.onrender.com/posts/${post._id}`}>
+    <NavLink to={`https://healthgen.onrender.com/posts/${post._id}`} className="post" title={`https://healthgen.onrender.com/posts/${post._id}`}>
         <div className="image-container">
             <img src={PF + post.img} alt={post.id} crossOrigin="anonymous"/>
         </div>
@@ -14,7 +15,7 @@ const Post = ({post}) => {
                 <div className="date"><i className="fa fa-clock"></i>{new Date(post.createdAt).toDateString()}</div>
             </div>
         </div>
-    </a>
+    </NavLink>
     );
 }
 export default Post;

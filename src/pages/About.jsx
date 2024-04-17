@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Icon from '../assets/logo.png';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const About = () => {
     return (
@@ -17,8 +18,8 @@ const About = () => {
                         <a href="https://www.linkedin.com/in/kibetkorir" className='linkedin' target='_blank' title='linkedin'><i className="fa fa-linkedin"></i></a>
                     </ul>
                     <div className="links">
-                        <a href="/contact" title='contact'>Contact Us</a>
-                        <a href="/#subscribe" title='newsletter'>Newsletter</a>
+                        <NavLink to="/contact" title='contact'>Contact Us</NavLink>
+                        <a href="#subscribe" title='newsletter'>Newsletter</a>
                     </div>
                 </div>
             </div>

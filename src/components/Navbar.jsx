@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { Outlet, NavLink} from "react-router-dom";
 import { UserContext } from '../UserContext';
 import Icon from '../assets/logo.png';
+import Holder from '../assets/image7.png';
 
 const Navbar = () => {
     const {user} = useContext(UserContext);
+    
     document.addEventListener('click', (e) => {      
         let element = document.querySelector('.dropdown');
         const classes = e.target.classList;
@@ -18,30 +20,25 @@ const Navbar = () => {
            return element.style.display = 'none'
         } 
     })
-    return (
+    return ( 
         <div className='navbar'>
             <a href="/" className="logo" title='healthgen'>
                 <img src={Icon} alt="healthgen-icon" />
             </a>
             <nav>
-                <NavLink to='/' className="link" title='healthgen' style={({ isActive }) => {return {color: isActive ? "#ffff" : "",background: isActive ? "#1253a3" : ""};}}>Home</NavLink>
-                <NavLink to='/books' className="link" title='books' style={({ isActive }) => {return {color: isActive ? "#ffff" : "",background: isActive ? "#1253a3" : ""};}}>Books</NavLink>
-                <NavLink to='/posts' className="link" title='posts' style={({ isActive }) => {return {color: isActive ? "#ffff" : "",background: isActive ? "#1253a3" : ""};}}>Posts</NavLink>
-                <NavLink to='/write' className="link" title='write' style={({ isActive }) => {return {color: isActive ? "#ffff" : "",background: isActive ? "#1253a3" : ""};}}>Write</NavLink>
-                <NavLink to='/about' className="link" title='about' style={({ isActive }) => {return {color: isActive ? "#ffff" : "",background: isActive ? "#1253a3" : ""};}}>About</NavLink>
-                <NavLink to='/contact' className="link" title='contact' style={({ isActive }) => {return {color: isActive ? "#ffff" : "",background: isActive ? "#1253a3" : ""};}}>Contact</NavLink>
+                <NavLink to='/' title='healthgen' end state={{ history: "/" }}>Home</NavLink>
+                <NavLink to='/books' title='books' end state={{ history: "books" }}>Books</NavLink>
+                <NavLink to='/posts' title='posts' end state={{ history: "posts" }}>Posts</NavLink>
+                <NavLink to='/write' title='write' end state={{ history: "write" }}>Write</NavLink>
+                <NavLink to='/about' title='about' end state={{ history: "about" }}>About</NavLink>
+                <NavLink to='/contact' title='contact' end state={{ history: "contact" }}>Contact</NavLink>
             </nav>
-            <span className="slider-button left" onClick={() => { alert('open')}}><i className="fa fa-angle-bottom"></i></span>
-            {   user && 
-                    <img className="user-avatar" src={ 
-                        user.img ? user.img : Icon
-                        } alt="avatar" />
-            }
+            {   user && <img className="user-avatar" src={ user.img ? user.img : Holder} alt="avatar" />}
             {
                 !user &&
                 <div className="button-group">
-                  <a href='/register' title='register'>Register</a>
-                  <a href='/login' title='login'>Login</a>
+                  <NavLink to='/get-started' title='register'>Register</NavLink>
+                  <NavLink to='/login' title='login'>Login</NavLink>
                 </div>
             }
             <Outlet />

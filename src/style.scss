@@ -174,6 +174,11 @@ $dark-grey: #7a7979;
         a{
             margin: 5px 5px;
         }
+            
+        a.active{
+            color: #ffff;
+            background: #1253a3;
+        }
         .button-group{
             a{
                 background: $dark-blue;
@@ -196,27 +201,6 @@ $dark-grey: #7a7979;
             border: 1px solid $dark-grey;
             cursor: pointer;
         }
-
-        .slider-button{
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            background: $light-grey;
-            top: 0;
-            bottom: 0;
-            z-index: 100;
-            cursor: pointer;
-            margin: 5px;
-            right: 10px;
-            &:hover{
-                border: 1px solid $dark-blue;
-            
-            }
-        }
     }
 
     .slider{
@@ -233,30 +217,37 @@ $dark-grey: #7a7979;
             display: flex;
             align-items: center;
             justify-content: center;
+
             .slide{
                 width: 100%;
                 min-width: 100vw;
                 height: 100%;
                 display: flex;
                 align-items: center;
+                justify-content: center;
+                position: relative;
                 .image-container{
                     margin: 0 10px;
                     padding: 10px;
                     width: 100%;
                     height: 100%;
-                    flex: 1;
                 }
                 .content{
                     width: 100%;
                     height: 100%;
-                    flex: 1;
                     margin: 0 10px;
-                    padding: 10px;
+                    padding: 5px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: space-evenly;
-
+                    position: absolute;
+                    background: rgba(0, 0, 0, 0.6);
+                    h2,p{
+                        color: #fff;
+                        line-height: 2;
+                        padding: 0 1.5rem;
+                    }
                 }
             }
         }
@@ -268,20 +259,25 @@ $dark-grey: #7a7979;
             align-items: center;
             justify-content: center;
             position: absolute;
-            background: $light-grey;
+            background: rgba(0, 0, 0, 0.6);
             top: 0;
             bottom: 0;
             z-index: 100;
             cursor: pointer;
             margin: auto;
+            color: #fff;
+
+
             &:first-of-type{
-                left: 10px;
+                left: 5px;
             }
             &:last-of-type{
-                right: 10px;
+                right: 5px;
             }
             &:hover{
                 border: 1px solid $dark-blue;
+                background: $light-grey;
+                color: #131313;
             
             }
         }
@@ -498,10 +494,11 @@ $dark-grey: #7a7979;
             justify-content: space-between;
             padding: 0 10px;
             flex-wrap: wrap;
+
             span{
                 color: $lite;
-            } 
-            
+                margin: 5px 5px;
+            }
         }
     }
 
@@ -620,6 +617,14 @@ $dark-grey: #7a7979;
                     width: 100%;
                     flex: 3;
                 }
+            }
+            .active{
+                background: #b9e7e7;
+            }
+
+            a.active{
+                color: #ffff;
+                background: #1253a3;
             }
         }
         > button{
@@ -823,58 +828,57 @@ $dark-grey: #7a7979;
     }
 
     > .profile{
-        width: 80%;
-        min-width: 350px;
+        max-width: 950px;
+        min-height: 100vh;
         padding: 10px auto;
+        margin: 5px 0;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
         color: $lite;
         background: $dark-blue;
-        border-radius: 5px;
-        margin: 20px 10px;
-
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        
-        text-align: center;
-        box-shadow: 0 10px 20px -10px $dark;
-        display: flex;
-
         flex-wrap: wrap;
+        text-align: center;
         .cover-photo{
             background: url(./assets/flyer.png);
             background-repeat: no-repeat;
             background-size: cover;
-            height: 160px;
+            height: 40%;
             width: 100%;
-            border-radius: 5px 5px 0 0;
             .profile-image{
                 height: 80px;
                 width: 80px;
                 border-radius: 50%;
-                margin: 100px 0 0 -255px;
+                margin: 100px 0 0 -70%;
                 border: 2px solid $dark-blue;
             }
         }
-        .profile-name{
-            font-size: 25px;
-            font-weight: bold;
-            margin-left: 27px ;
         
+        .profile-name{
+            font-size: 22px;
+            font-weight: bold;
         }
-        .about-me{
-            margin-top: 35px;
-            line-height: 21px;
+    
+        .profile-name, .about-me, h3, .description{
+            text-align: start;
+            padding: 10px 20px;
+            padding: 5px 10px;
             color: $lite;
         }
-        .btn-container{
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            margin: 10px 0;
-        }
-    }
 
+        button{
+            background: $red;
+        }
+
+        button:hover{
+            color: #fff;
+            background: red;
+        }
+
+    }
+    
 
     .about{
         width: 100%;
@@ -1049,9 +1053,10 @@ $dark-grey: #7a7979;
         align-items: center;
         justify-content: center;
         .writeImg {
-            width: 80vw;
-            height: 250px;
-            border-radius: 10px;
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 5px;
             object-fit: cover;
         }
         .writeForm {
