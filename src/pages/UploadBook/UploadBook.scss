@@ -1,0 +1,106 @@
+.uploadBook{
+    width: inherit;
+    //height: 100vh;
+    background: var(--light-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    form{
+        background: var(--lite);
+        display: flex;
+        flex-direction: column;
+        padding: 2vw 4vw;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 10px;
+        margin: 10px;
+        h3{
+            color: var(--dark-grey);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .input, textarea{
+            border: 0;
+            margin: 10px 0;
+            padding: 10px;
+            outline: none;
+            background: var(--light-grey);
+            font-size: 16px;
+        }
+
+        textarea{
+            max-width: 100%;
+        }
+
+        .label{
+            border: 0;
+            margin: 5px 0;
+            padding: 5px;
+            outline: none;
+            background: var(--light-grey);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            i{
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: 1px solid;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--dark-grey);
+                cursor: pointer;
+            }
+
+        }
+
+        .tagsWrapper{
+            width: 100%;
+            ul{
+                display: flex;
+                padding: 7px;
+                border: 1px solid var(--light-grey);
+                border-radius: 5px;
+                margin: 12px 0;
+                li{
+                    list-style: none;
+                    margin: 4px;
+                    border-radius: 5px;
+                    background: var(--light-grey);
+                    padding: 4px;
+                    border: 1px solid var(--light-blue);
+                    text-transform: uppercase;
+                    font-family: monospace;
+                    i{
+                        height: 15px;
+                        width: 15px;
+                        font-size: 14px;
+                        border-radius: 50%;
+                        margin-left: 4px;
+                        padding: 1px;
+                        color: var(--lite);
+                        background: var(--dark-grey);
+                    }
+                }
+                input{
+                    flex: 1;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    padding: 5px;
+                }
+            }
+            .details{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        button[type="submit"]{
+            font-size: 16px;
+            background: var(--dark);
+            border-radius: 30px;
+        }
+    } 
+}

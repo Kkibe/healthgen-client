@@ -1,0 +1,199 @@
+
+.single-news{
+    width: 100%;
+    min-height: fit-content;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    padding: 10px 5px;
+    gap: 10px;
+    position: relative;
+    flex-wrap: wrap;
+    .scroll-line{
+        left: 0;
+        top: 0;
+        z-index: 1;
+        margin-top: 60px;
+        height: 2px;
+        background: var(--blue);
+        margin-bottom: -30px;
+        width: 0%;
+        position: fixed;
+    }
+    .wrapper{
+        width: 100%;
+        height: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 1200px;
+        flex: 3;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        img{
+            width: 100%;
+            max-height: 300px;
+            border-radius: 6px;
+            transition: all 0.4s;
+            flex: 1;
+            margin-top: 10px;
+        }
+        
+        h2{
+            text-align: start;
+            color: var(--blue);
+        }
+
+        h4{
+            *{
+                color: var(--dark-grey);
+                font-size: 14px;
+                cursor: default;
+            }
+        }
+    }
+    .sidebar{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        flex: 1;
+        gap: 10px;
+        .news-items{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: scroll;
+            overflow-x: hidden;
+            scroll-snap-type: proximity;
+            scroll-margin: 5px;
+
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+
+
+            &::-webkit-scrollbar{
+                width: 1px;
+                display: none;
+            }
+              
+            &::-webkit-scrollbar-track{
+                display: none;
+            }
+              
+            &::-webkit-scrollbar-thumb{
+                background: var(--dark-blue);
+                border-radius: 2px;
+            }
+        }
+
+
+        .container{
+            a{
+                font-size: 20px;
+            }
+        }
+
+        .copy-link{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-grey);
+            input{
+                width: 100%;
+                border: none;
+                outline: none;
+                height: inherit;
+                flex: 6;
+                background: var(--light-grey);
+                font-size: 18px;
+                padding: 4px;
+            }
+            button{
+                flex: 2;
+                width: 100%;
+            }
+        }
+    }
+
+    h4{
+        width: 100%;
+        gap: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        *{
+            padding: 3px 0;
+            width: fit-content;
+            text-decoration: none;
+        }
+        
+        .category{
+            border: 1px solid var(--light-grey);
+            border-radius: 4px;
+            text-align: center;
+            padding: 3px 5px;
+        }  
+        .read {
+          float: right;
+          font-size: 14px;
+          font-family: 'Times New Roman', Times, serif;
+          background: var(--light-blue);
+          padding: 3px 3px;
+        }
+    }
+
+    @media screen and (max-width: 789px) {
+        &{
+            flex-direction: column;
+            
+            img{
+                width: 100%;
+                max-height: 250px;
+                height: auto;
+                min-width: none;
+            }
+
+            .sidebar{
+            
+                .news-items{
+                    flex-direction: row;
+                    justify-content: space-between;
+                    padding: 5px 10px;
+                    .news-item{
+                        width: calc((100% - 20px) / 2);
+                        font-size: 16px;
+                    }
+                }
+                .newsletter{
+                    display: none;
+                }
+            }
+        }
+        
+        @media screen and (max-width: 569px) {
+            &{
+                .sidebar{
+                    .news-items{
+                        .news-item{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+

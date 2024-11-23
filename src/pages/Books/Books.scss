@@ -1,0 +1,16 @@
+.books{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .wrapper{
+        width: 100%;
+        margin: 5px 0;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+}
