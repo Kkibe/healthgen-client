@@ -5,7 +5,7 @@
 - users can read, post and download books and blogs post
 - It is the front-end part of the MERN Stack Application
 - Repository for backend API can be found at <a href="https://github.com/Kkibe/healthgen-api">Healthgen API</a>
-- <a href="https://healthgen-client.onrender.com/"> Live Preview</a>
+- <a href="https://healthgen-client.onrender.com/" target="_blank"> Live Preview</a>
 
 <ul>
   <h1>technologies used:</h2>
